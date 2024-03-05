@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
     pageEncoding="US-ASCII"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="US-ASCII">
-<title>Insert title here</title>
+<title>KAIS | Products</title>
 </head>
 <body>
 	<div class="container">
@@ -25,7 +26,7 @@
 					<c:forEach var="product" items="${products}" varStatus="row">
 					<tr>
 						<td>${row.index + 1}</td>
-						<td>${product.name}</td>
+						<td><a href="/products/${product.id}">${product.name}</a></td>
 						<td>${product.description}</td>
 						<td>${product.category}</td>
 						<td>${product.price}</td>
@@ -35,6 +36,10 @@
 					</c:forEach>
 				</tbody>
 			</table>
+		</c:if>
+		
+		<c:if test="${empty products}">
+		<span style="color:red;">No product(s) found.</span>
 		</c:if>
 	</div> <!--  end of container -->
 	

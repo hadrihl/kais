@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
     pageEncoding="US-ASCII"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://java.sun.com/jsp/jstl/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +10,9 @@
 </head>
 <body>
 	<div class="container">
+		<c:if test="${not empty product}">
 		<h1>Edit Product</h1>
-		<form:form action="/product/${product.id}" method="post" modelattribute="product">
+		<form:form action="/products/${product.id}" method="post" modelattribute="product">
 			<div class="form-group" style="margin-top: 10px; margin-bottom: 20px;">
 				<label for="name">Product Name</label>
 				<input type="text" id="name" name="name" value="${product.name}" />
@@ -37,6 +38,9 @@
 				<button type="submit">Update</button>
 			</div>
 		</form:form>
+		</c:if>
+		
+		<c:if test="${empty product}"><p>Product not found.</p></c:if>
 	</div>
 	
 	<footer style="margin-top: 20px;"><a href="/">KAIS</a> &copy; 2024. Made with love in Machang.</footer>

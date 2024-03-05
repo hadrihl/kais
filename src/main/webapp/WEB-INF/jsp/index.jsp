@@ -10,8 +10,13 @@
 	<div class="container">
 		<h1>Welcome to KAIS system</h1>
 		
-		<a href="/register">Register</a>
-		<a href="/login">Login</a>
+		<nav>
+			<ul>
+				<li><a href="/products">Products</a></li>
+				<li><a href="/register">Register</a></li>
+				<li><a href="/login">Login</a></li>
+			</ul>
+		</nav>
 	</div>
 	<footer style="margin-top: 20px;"><a href="/">KAIS</a> &copy; 2024. Made with love in Machang.</footer>
 </body>
