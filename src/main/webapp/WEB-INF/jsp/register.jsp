@@ -34,8 +34,7 @@
 			</div>
 			</c:if>
 			<div class="form-group" style="margin-top: 20px;">
-				<a href="/"><button>Cancel</button></a>
-				<button type="submit">Register</button>
+				<button type="submit">Submit</button>
 			</div>
 		</form:form>
 	</div>
