@@ -26,7 +26,7 @@
 			</div>
 			</c:if>
 			<div class="form-group" style="margin-top: 20px;">
-				<button type="submit">Login</button>
+				<button type="submit">Submit</button>
 			</div>
 		</form:form>
 	</div>
