@@ -26,16 +26,18 @@ public class CommonController {
 	public String registerNewUser(@ModelAttribute("user") User user, @RequestParam("cpassword") String cpassword, Model  model) {
 		
 		if(userService.userExists(user.getEmail())) {
-			model.addAttribute("errmsg", "User/email already existed. Please log in.");
-		}
-		
-		if(user.getPassword().equals(cpassword)) {
-			User tmp = userService.registerNewUser(user);
+			model.addAttribute("errmsg", "User/email already existed. Please log in");
+			return "/register";
 			
 		} else {
-			model.addAttribute("errmsg", "Password not match. Please try again.");
+			if(user.getPassword().equals(cpassword)) {
+				User tmp = userService.registerNewUser(user);
+				return "redirect:/";
+				
+			} else {
+				model.addAttribute("errmsg", "Password not match. Please try again.");
+				return "/register";
+			}
 		}
-		
-		return "redirect:/";
 	}
 }

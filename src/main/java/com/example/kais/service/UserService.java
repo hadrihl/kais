@@ -33,7 +33,6 @@ public class UserService {
 	public User registerNewUser(User user) {
 		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 		user.addRoles(roleRepository.findById(1L).get());
-		
-		return user;
+		return userRepository.save(user);
 	}
 }
