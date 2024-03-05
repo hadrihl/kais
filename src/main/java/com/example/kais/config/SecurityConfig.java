@@ -27,6 +27,7 @@ public class SecurityConfig {
 				.loginProcessingUrl("/login")
 				.usernameParameter("username")
 				.defaultSuccessUrl("/products")
+				.permitAll()
 				.and()
 			.logout()
 				.invalidateHttpSession(true)
