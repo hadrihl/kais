@@ -9,13 +9,6 @@
 <title>KAIS | Products</title>
 </head>
 <body>
-	<header style="margin-bottom: 20px;">
-		<h1>Welcome, ${username}</h1>
-		<form:form action="${pagecontext.request.contextpath}/logout" method="post">
-			<button type="submit">Logout</button>
-		</form:form>
-	</header>
-
 	<div class="container">
 		<c:if test="${not empty products}">
 			<table>
@@ -50,6 +43,15 @@
 		<span style="color:red;">No product(s) found.</span>
 		</c:if>
 	</div> <!--  end of container -->
+	
+	<c:if test="${not empty pageContext.request.userPrincipal}">
+	<div class="container" style="margin-top: 20px; margin-bottom: 20px;">
+		<p>Welcome, ${username}</p>
+		<form:form action="/logout" method="post">
+			<button type="submit">Logout</button>
+		</form:form>
+	</div>
+	</c:if>
 	
 	<footer style="margin-top: 20px;"><a href="/">KAIS</a> &copy; 2024. Made with love in Machang.</footer>
 </body>
