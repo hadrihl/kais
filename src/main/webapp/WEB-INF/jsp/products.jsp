@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
     pageEncoding="US-ASCII"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,13 @@
 <title>KAIS | Products</title>
 </head>
 <body>
+	<header style="margin-bottom: 20px;">
+		<h1>Welcome, ${username}</h1>
+		<form:form action="${pagecontext.request.contextpath}/logout" method="post">
+			<button type="submit">Logout</button>
+		</form:form>
+	</header>
+
 	<div class="container">
 		<c:if test="${not empty products}">
 			<table>
