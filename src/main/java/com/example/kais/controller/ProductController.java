@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.kais.entity.Product;
 import com.example.kais.service.CustomUserDetails;
 import com.example.kais.service.ProductService;
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 @Controller
 public class ProductController {
@@ -39,7 +40,8 @@ public class ProductController {
 	}
 	
 	@PostMapping("/products/new")
-	public String createNewProduct() {
+	public String createNewProduct(Model model, @ModelAttribute("product") Product product) {
+		productService.createNewProduct(product);
 		return "redirect:/products";
 	}
 	
@@ -61,5 +63,11 @@ public class ProductController {
 		}
 		
 		return "product";
+	}
+	
+	@PostMapping("/products/{id}/delete")
+	public String deleteProduct(@PathVariable("id") Long id) {
+		productService.deleteProduct(id);
+		return "redirect:/products";
 	}
 }

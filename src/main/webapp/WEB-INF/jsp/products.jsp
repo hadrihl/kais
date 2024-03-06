@@ -32,7 +32,11 @@
 						<td>${product.category}</td>
 						<td>${product.price}</td>
 						<td>${product.quantity}</td>
-						<td>Delete</td>
+						<td>
+							<form:form action="/products/${product.id}/delete">
+								<button type="submit">Delete</button>
+							</form:form>
+						</td>
 					</tr>
 					</c:forEach>
 				</tbody>
@@ -43,6 +47,10 @@
 		<span style="color:red;">No product(s) found.</span>
 		</c:if>
 	</div> <!--  end of container -->
+	
+	<div class="container" style="margin-top: 20px;">
+		<a href="/products/new">Add Product</a>
+	</div>
 	
 	<c:if test="${not empty pageContext.request.userPrincipal}">
 	<div class="container" style="margin-top: 20px; margin-bottom: 20px;">

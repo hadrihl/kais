@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
     pageEncoding="US-ASCII"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://java.sun.com/jsp/jstl/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,27 +15,26 @@
 		<form:form action="/products/new" method="post" modelattribute="product">
 			<div class="form-group" style="margin-top: 10px; margin-bottom: 20px;">
 				<label for="name">Product Name</label>
-				<input type="text" id="name" name="name" required />
+				<input type="text" id="name" name="name" />
 			</div>
 			<div class="form-group" style="margin-top: 10px; margin-bottom: 20px;">
 				<label for="description">Description</label>
-				<input type="text" id="description" name="description" required />
+				<input type="text" id="description" name="description" />
 			</div>
 			<div class="form-group" style="margin-top: 10px; margin-bottom: 20px;">
 				<label for="category">Category</label>
-				<input type="text" id="category" name="category" required />
+				<input type="text" id="category" name="category" />
 			</div>
 			<div class="form-group" style="margin-top: 10px; margin-bottom: 20px;">
 				<label for="price">Price per Unit (MYR)</label>
-				<input type="number" id="price" name="price" required />
+				<input type="number" id="price" name="price" />
 			</div>
 			<div class="form-group" style="margin-top: 10px; margin-bottom: 20px;">
 				<label for="quantity">Quantity</label>
-				<input type="text" id="quantity" name="quantity" required />
+				<input type="text" id="quantity" name="quantity" />
 			</div>
 			<div class="form-group" style="margin-top: 10px; margin-bottom: 20px;">
-				<a href="/products"><button>Cancel</button></a>
-				<button type="submit">Update</button>
+				<button type="submit">Submit</button>
 			</div>
 		</form:form>
 	</div>
