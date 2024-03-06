@@ -7,6 +7,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.example.kais.entity.Product;
@@ -50,8 +51,15 @@ public class ProductController {
 	}
 	
 	@PostMapping("/products/{id}")
-	public String updateProductDetails() {
-		return "redirect:products";
+	public String updateProductDetails(Model model, @PathVariable("id") Long id, @ModelAttribute("product") Product product) {
+		Product savedProduct = productService.updateProductDetails(product, id);
+		
+		if(savedProduct == null) {
+			model.addAttribute("errmsg", "Update unsuccessful.");
+		} else {
+			model.addAttribute("msg", "Update successful.");
+		}
+		
+		return "product";
 	}
-
 }

@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
 import com.example.kais.service.UserDetailsServiceImpl;
 
 @Configuration
@@ -44,6 +43,7 @@ public class SecurityConfig {
 				.antMatchers(HttpMethod.POST, "/register").permitAll()
 				.antMatchers(HttpMethod.GET, "/products").hasAnyAuthority("ADMIN", "USER")
 				.antMatchers(HttpMethod.GET, "/products/**").hasAnyAuthority("ADMIN", "USER")
+				.antMatchers(HttpMethod.POST, "/products/**").hasAnyAuthority("ADMIN", "USER")		
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
@@ -56,7 +56,7 @@ public class SecurityConfig {
 			.logout()
 				.invalidateHttpSession(true)
 				.logoutSuccessUrl("/");
-				
+		
 		return http.build();
 	}
 

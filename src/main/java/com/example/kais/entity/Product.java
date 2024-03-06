@@ -25,7 +25,6 @@ public class Product {
 	private String quantity;
 	
 	// Generate Getters and Setters
-
 	public Long getId() {
 		return id;
 	}

@@ -10,7 +10,6 @@
 </head>
 <body>
 	<div class="container">
-		<c:if test="${not empty product}">
 		<h1>Edit Product</h1>
 		<form:form action="/products/${product.id}" method="post" modelattribute="product">
 			<div class="form-group" style="margin-top: 10px; margin-bottom: 20px;">
@@ -33,14 +32,21 @@
 				<label for="quantity">Quantity</label>
 				<input type="text" id="quantity" name="quantity" value="${product.quantity}" />
 			</div>
+			<c:if test="${not empty errmsg}">
+			<div class="form-group">
+				<p style="color: red">${errmsg}</p>
+			</div>	
+			</c:if>
+			<c:if test="${not empty msg}">
+			<div class="form-group">
+				<p style="color: green;">${msg}</p>
+			</div>
+			</c:if>
 			<div class="form-group" style="margin-top: 10px; margin-bottom: 20px;">
-				<a href="/products"><button>Cancel</button></a>
+				<button><a href="/products">Cancel</a></button>
 				<button type="submit">Update</button>
 			</div>
 		</form:form>
-		</c:if>
-		
-		<c:if test="${empty product}"><p>Product not found.</p></c:if>
 	</div>
 	
 	<footer style="margin-top: 20px;"><a href="/">KAIS</a> &copy; 2024. Made with love in Machang.</footer>
